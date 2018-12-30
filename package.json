@@ -1,6 +1,24 @@
-{ "name" : "pronounbot"
-, "version" : "1.0.0"
-, "description" : "Discord bot to control pronoun roles for queer servers."
-, "license" : "GNU GPLv3"
-, "main" : "bot.js"
+{
+  "name": "pronounbot",
+  "version": "1.0.0",
+  "description": "Discord bot to control pronoun roles for queer servers",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
+  },
+  "keywords": [
+    "heroku",
+    "discord.js"
+  ],
+  "author": "space-pagan",
+  "license": "GPL-3.0-or-later",
+  "engines": {
+    "node": "11.6.0",
+    "npm": "6.5.0-next.0"
+  }
 }
