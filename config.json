@@ -1,4 +1,13 @@
 {
-  "token": "NTI4NTQyODc5NzE1NTU3Mzc3.Dwj0UA.Xs6uW9qDPM1rzFXiZIypERnaQ60",
-  "prefix": "/"
+  "token": "NTI4NTQyODc5NzE1NTU3Mzc3.Dwq1Lg.644cC2P3Qk3iDltqFyOds-xR9TE",
+  "prefix": "/pronoun",
+  "welcomeChannel": "intros",
+  "faqChannel": "faq",
+  "rolesChannel": "roles",
+  "rulesChannel": "server-rules",
+  "hiddenCommands": [
+    "help",
+	"load",
+	"reload"
+  ]
 }

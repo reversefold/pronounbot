@@ -1,43 +1,35 @@
 const Discord = require("discord.js");
+const Enmap = require("enmap");
+const fs = require("fs");
+const SelfReloadJSON = require('self-reload-json');
+
 const client = new Discord.Client();
-const config = require("./config.json");
- 
-client.on("ready", () => {
-	console.log("I am ready!");
+var config = new SelfReloadJSON('./config.json');
+//REMEMBER TO REMOVE SelfReloadJSON
+client.config = config;
+
+fs.readdir("./events/", (err, files) => {
+	if (err) return console.error(err);
+	files.forEach(file => {
+		if (!file.endsWith(".js")) return;
+		const event = require(`./events/${file}`);
+		let eventName = file.split(".")[0];
+		console.log(`Attempting to load event "${eventName}"`);
+		client.on(eventName, event.bind(null, client));
+	});
 });
- 
-client.on("message", (message) => {
-	if(message.content.substring(0,1) == config.prefix && !message.author.bot){
-		var cmd = message.content.toLowerCase().split(/ +/g);
-		var args = cmd.slice(1, cmd.length);
-		cmd = cmd[0];
-		if(cmd == "/pronoun"){
-			message.delete();
-			switch(args[0]) {
-				/*case "check":
-					if(args[1]){
-						var myRole = message.guild.roles.find(role => role.name.toLowerCase() === args[1]);
-						if(myRole){
-							message.channel.send('You have the role "'+myRole.name+'"!');
-						}else{
-							message.channel.send('You do not have the role "'+args[1]+'"!');
-						}
-					}else{
-						message.channel.send("Please specify a role to check!");
-					}
-					break;*/
-				case "set":
-					var roles = message.guild.roles;
-					for (var k in roles) {
-						message.channel.send(k.name);
-					}
-					break;
-				default:
-					//message.channel.send('The command "' + cmd + " " + args[0] + ' {...}" is not supported yet.');
-					break;
-			}
-		}
-	}	
+
+client.commands = new Enmap();
+
+fs.readdir("./commands/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    if (!file.endsWith(".js")) return;
+    let props = require(`./commands/${file}`);
+    let commandName = file.split(".")[0];
+    console.log(`Attempting to load command "${commandName}"`);
+    client.commands.set(commandName, props);
+  });
 });
- 
+
 client.login(config.token);
