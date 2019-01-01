@@ -7,6 +7,7 @@ const client = new Discord.Client();
 var config = new SelfReloadJSON('./config.json');
 //REMEMBER TO REMOVE SelfReloadJSON
 client.config = config;
+client.enmap = Enmap;
 
 fs.readdir("./events/", (err, files) => {
 	if (err) return console.error(err);

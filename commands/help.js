@@ -1,21 +1,29 @@
 exports.run = (client, message, args) => {
 	var msgString;
-	if(args[0]){
-		var command = client.commands.get(args[0]);
-		if(command){
-			msgString = "\nCommand: " + command + "\nUsage: <USAGE>\nDescription: <DESCRIPTION>";
+	const cmdConf = client.config.commands;
+	var commands = new client.enmap();
+	for(var i in cmdConf){
+		commands.set(cmdConf[i].name, cmdConf[i]);
+	}
+	if(args[0] && args[0] != "help"){
+		var cmd = commands.get(args[0]);
+		if(cmd){
+			msgString = "\nCommand: " + cmd.name;
+			if(cmd.hidden){
+				msgString += " [ADMIN ONLY]";
+			}
+			msgString += "\nUsage: " + client.config.prefix + " " + cmd.usage + "\nDescription: " + cmd.description;
 		}else{
 			msgString = ', "' + args[0] + '" is not a valid command. Please enter ' + client.config.prefix + " help for a list of commands.";
 		}
 	}else{
 		msgString = "\nThe available commands are:\n";
-		var commands = client.commands.keyArray();
-		for(var k in commands){
-			var name = commands[k];
-			if(!client.config.hiddenCommands.includes(name)){
-				msgString += "\t" + name + "\n";
+		commands.every((k) => {
+			if(!k.hidden){
+				msgString += "\t" + k.name + "\n";
 			}
-		}
+			return true;
+		});
 		msgString += '\nTo see command details, enter "' + client.config.prefix + ' help CommandName"';
 	}
 	message.channel.send(message.member + msgString);

@@ -1,13 +1,34 @@
 {
-  "token": "NTI4NTQyODc5NzE1NTU3Mzc3.Dwq1Lg.644cC2P3Qk3iDltqFyOds-xR9TE",
+  "token": "NTI4NTQyODc5NzE1NTU3Mzc3.Dww2cg.YSLunFeKBQkQtPMTjh1sF7zuzdA",
   "prefix": "/pronoun",
   "welcomeChannel": "intros",
   "faqChannel": "faq",
   "rolesChannel": "roles",
   "rulesChannel": "server-rules",
-  "hiddenCommands": [
-    "help",
-	"load",
-	"reload"
+  "commands": [
+    {
+	  "name":"help",
+	  "hidden":true,
+	  "description":"",
+	  "usage":"help [CommandName]"
+	},
+	{
+	  "name":"load",
+	  "hidden":true,
+	  "description":"",
+	  "usage":"load CommandName"
+	},
+	{
+	  "name":"reload",
+	  "hidden":true,
+	  "description":"",
+	  "usage":"reload"
+	},
+	{
+	  "name":"set",
+	  "hidden":false,
+	  "description":"Assigns the user a new pronoun role. Previous pronouns are removed.",
+	  "usage":"set PronounToSet"
+	}
   ]
 }
