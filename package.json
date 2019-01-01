@@ -1,6 +1,6 @@
 {
   "name": "pronounbot",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Discord bot to control pronoun roles for queer servers",
   "main": "bot.js",
   "dependencies": {

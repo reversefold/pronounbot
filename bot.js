@@ -5,6 +5,7 @@ const SelfReloadJSON = require('self-reload-json');
 
 const client = new Discord.Client();
 var config = new SelfReloadJSON('./config.json');
+const auth = require('./token.json');
 //REMEMBER TO REMOVE SelfReloadJSON
 client.config = config;
 client.enmap = Enmap;
@@ -33,4 +34,4 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-client.login(config.token);
+client.login(auth.token);
