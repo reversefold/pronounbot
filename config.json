@@ -27,7 +27,14 @@
 	  "name":"set",
 	  "hidden":false,
 	  "description":"Assigns the user a new pronoun role. Previous pronouns are removed.",
-	  "usage":"set PronounToSet"
+	  "usage":"set PronounToSet",
+	  "example":"set she"
+	},
+	{
+	  "name":"list",
+	  "hidden":false,
+	  "description":"Lists available pronoun roles.",
+	  "usage":"list"
 	}
   ]
 }

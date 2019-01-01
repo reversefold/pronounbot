@@ -13,6 +13,9 @@ exports.run = (client, message, args) => {
 				msgString += " [ADMIN ONLY]";
 			}
 			msgString += "\nUsage: " + client.config.prefix + " " + cmd.usage + "\nDescription: " + cmd.description;
+			if(cmd.example){
+				msgString += "\nExample: " + client.config.prefix + " " + cmd.example;
+			}
 		}else{
 			msgString = ', "' + args[0] + '" is not a valid command. Please enter ' + client.config.prefix + " help for a list of commands.";
 		}
