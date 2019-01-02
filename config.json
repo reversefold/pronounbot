@@ -1,9 +1,12 @@
 {
   "prefix": "/pronoun",
   "welcomeChannel": "intros",
-  "faqChannel": "faq",
-  "rolesChannel": "roles",
-  "rulesChannel": "server-rules",
+  "welcomeChannelList": [
+    "faq",
+    "roles",
+    "server-rules"
+  ],
+  "requestChannel": "bottest",
   "commands": [
     {
 	  "name":"help",
@@ -35,6 +38,13 @@
 	  "hidden":false,
 	  "description":"Lists available pronoun roles.",
 	  "usage":"list"
+	},
+	{
+	  "name":"request",
+	  "hidden":false,
+	  "description":"Requests a pronoun role, to be accepted by a server moderator.",
+	  "usage":"request PronounToRequest #HexColor",
+	  "example":"request They/Them #9b59b6"
 	}
   ]
 }

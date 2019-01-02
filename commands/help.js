@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
 			if(cmd.hidden){
 				msgString += " [ADMIN ONLY]";
 			}
-			msgString += "\nUsage: " + client.config.prefix + " " + cmd.usage + "\nDescription: " + cmd.description;
+			msgString += "\nDescription: " + cmd.description + "\nUsage: " + client.config.prefix + " " + cmd.usage;
 			if(cmd.example){
 				msgString += "\nExample: " + client.config.prefix + " " + cmd.example;
 			}
